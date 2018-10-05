@@ -1,24 +1,7 @@
-# README
+Create myrecipe app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+start Integration test--TDD Design the app based on test first approach
+Write the test for the functionality
+check for test pass
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Refactored the code
