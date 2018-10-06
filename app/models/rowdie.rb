@@ -1,0 +1,3 @@
+class Rowdie < ApplicationRecord
+  
+end
