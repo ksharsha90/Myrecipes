@@ -1,0 +1,19 @@
+<%= render 'shared/page_title', title: @team.name %>
+  <div class="card col-md-8 offset-md-2 bg-light mb-2 p-2">
+    <h4 class="center description"><strong>About my fav team</strong></h4>
+    <hr />
+    <%= simple_format(@team.description) %>
+    <hr />
+    <div class="text-right">
+      <p class="cent">
+        <em>Created by:</em>
+      </p>
+      <p class="cent">
+        <%= link_to gravatar_for(@team.rowdie), team_path %>
+      </p>
+      <p class="cent">
+        <small><%= @team.rowdie.rowdyname.capitalize %></small>
+        <div class="text-right"><%= time_ago_in_words(@team.created_at) %> ago </div>
+      </p>
+    </div>
+  </div>

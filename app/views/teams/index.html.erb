@@ -1,14 +1,14 @@
-<h1 align="center">Listing all  Teams</h1>
-<hr/>
+<%= render 'shared/page_title', title: "showing all teams" %>
+
 <% @teams.each do |team| %>
 <div class="row">
   <div class="col-md-2">
-    <section class="center">
-      
+    <section class="rowdy_info center">
+      <%= gravatar_for(team.rowdie, size: 120) %>
     </section>
   </div>
-  <div class="col-md-8 card bg-light p-3 mb-4 ">
-    <h4><%= team.name %></h4>
+  <div class="col-md-8 card bg-light  p-3 mb-4 ">
+    <h4><%= link_to team.name, team_path(team)  %></h4>
       <p><%= truncate(team.description, length: 150) %></p>
       <p>
       <span class="quiet"><small>Created <%= time_ago_in_words(team.created_at) %> ago</small></span>

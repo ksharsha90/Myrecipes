@@ -17,8 +17,24 @@ class TeamsTest < ActionDispatch::IntegrationTest
   test "should get teams listing" do
       get teams_path
       assert_template 'teams/index'
-      assert_match @team.name, response.body
-      assert_match @team2.name, response.body
+      assert_select "a[href=?]", team_path(@team), text: @team.name
+      assert_select "a[href=?]", team_path(@team2), text: @team2.name
+  end
+  
+  test "should get teams show" do
+    get team_path(@team)
+    assert_template 'teams/show'
+    assert_match @team.name, response.body
+    assert_match @team.description, response.body
+    assert_match @rowdie.rowdyname, response.body
+  end
+  
+  test "create new valid team" do
+    get new_team_path
+  end
+  
+  test "reject invalid team submissions" do
+    get new_team_path
   end
   
 end
