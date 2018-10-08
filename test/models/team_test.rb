@@ -3,8 +3,14 @@ require 'test_helper'
 class TeamTest < ActiveSupport::TestCase
   
   def setup
-    @team = Team.new(name: "Liverpool", description: "European Royalty")
+    @rowdie = Rowdie.create!(rowdyname: "harsha", email: "harsha@example.com")
+    @team = @rowdie.teams.build(name: "Liverpool", description: "European Royalty")
   end 
+  
+  test "teams without rowdies should be invalid" do
+    @team.rowdie_id = nil
+    assert_not @team.valid?
+  end
   
   test "team should be valid" do
     assert @team.valid?
