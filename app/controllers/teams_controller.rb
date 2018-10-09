@@ -23,6 +23,26 @@ class TeamsController < ApplicationController
     end
   end
   
+  def edit
+    @team = Team.find(params[:id])
+  end
+  
+  def update
+    @team = Team.find(params[:id])
+    if @team.update(team_params)
+    flash[:success] = "Team was updated successfully!"
+    redirect_to team_path(@team)
+    else
+      render 'edit'
+    end
+  end
+  
+  def destroy
+    Team.find(params[:id]).destroy
+    flash[:success] = "Your team was deleted successfully!"
+    redirect_to teams_path
+  end
+  
   private 
   
   def team_params
