@@ -1,4 +1,25 @@
 <%= render 'shared/page_title', title: "choose a new team" %>
+<% if @team.errors.any? %>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card bg-danger">
+          <div class="card-heading">
+          <h2 class="card-title">
+            <%= pluralize(@team.errors.count, "error") %>
+                          prohibited this <%= @team.class %> from being saved: 
+          </h2>
+          <div class="card-body">
+             <ul>
+                <%= @team.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+                <% end %>
+              </ul>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+<% end %>
 
 <div class="row">
   <div class="col-md-12">

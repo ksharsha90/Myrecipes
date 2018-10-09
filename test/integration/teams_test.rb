@@ -31,10 +31,26 @@ class TeamsTest < ActionDispatch::IntegrationTest
   
   test "create new valid team" do
     get new_team_path
+    assert_template 'teams/new'
+    name_of_team = "Barca"
+    description_of_team = "Worst and Cheaters team, Tiki-taka, I hate them"
+    assert_difference 'Team.count', 1 do
+      post teams_path, params: { team: { name: name_of_team, description: description_of_team } }
+    end
+    follow_redirect!
+    assert_match name_of_team.capitalize, response.body
+    assert_match description_of_team, response.body
   end
   
   test "reject invalid team submissions" do
     get new_team_path
+    assert_template 'teams/new'
+    assert_no_difference 'Team.count' do
+      post teams_path, params: { team: {name: " ", description: " " } }
+    end
+    assert_template 'teams/new'
+    assert_select 'h2.card-title'
+    assert_select 'div.card-body'
   end
   
 end
