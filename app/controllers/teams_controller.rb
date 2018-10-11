@@ -1,11 +1,13 @@
 class TeamsController < ApplicationController
   
+  before_action :set_team, only: [:show, :edit, :update]
+  
   def index
     @teams = Team.all
   end
   
   def show
-    @team = Team.find(params[:id])
+   
   end
   
   def new
@@ -24,11 +26,11 @@ class TeamsController < ApplicationController
   end
   
   def edit
-    @team = Team.find(params[:id])
+   
   end
   
   def update
-    @team = Team.find(params[:id])
+    
     if @team.update(team_params)
     flash[:success] = "Team was updated successfully!"
     redirect_to team_path(@team)
@@ -44,6 +46,10 @@ class TeamsController < ApplicationController
   end
   
   private 
+  
+  def set_team
+    @team = Team.find(params[:id])
+  end
   
   def team_params
     params.require(:team).permit(:name, :description)
