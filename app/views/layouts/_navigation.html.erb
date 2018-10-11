@@ -30,7 +30,7 @@
      <ul class="navbar-nav">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= current_rowdie.rowdyname.capitalize %>'s Profile
+          <%= current_rowdie.rowdyname.capitalize %>'s Profile <%= "Admin" if current_rowdie.admin? %>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           

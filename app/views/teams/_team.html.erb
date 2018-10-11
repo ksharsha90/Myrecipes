@@ -12,7 +12,7 @@
       <p>
       <span class="quiet"><small>Created <%= time_ago_in_words(team.created_at) %> ago</small></span>
       </p>
-      <% if logged_in? && current_rowdie == team.rowdie %>
+      <% if logged_in? && (current_rowdie == team.rowdie || current_rowdie.admin?) %>
       <div class="recipe-actions">
         <%= link_to "Edit your team", edit_team_path(team), class: "btn btn-xs btn-warning" %>
         <%= link_to "Delete your team", team_path(team), method: :delete,

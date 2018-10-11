@@ -15,10 +15,16 @@
         <li>
           <small><%= pluralize(rowdie.teams.count, "team") if rowdie.teams %></small>
         </li>
+        
+        <% if logged_in? && current_rowdie.admin? && !rowdie.admin? %>
+        
         <li>
           <%= link_to "Delete this rowdie", rowdy_path(rowdie), method: :delete,
               data: { confirm: "Are you sure you want to delete this rowdie and all associated teams?" } %>
         </li>
+        
+        <% end %>
+        
       </div>
     </div>
   </ul>

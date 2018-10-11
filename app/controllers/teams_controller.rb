@@ -58,7 +58,7 @@ class TeamsController < ApplicationController
   end
   
   def require_same_user
-    if current_rowdie != @team.rowdie
+    if current_rowdie != @team.rowdie and !current_rowdie.admin?
       flash[:danger] = "You can only edit or delete your own team!"
       redirect_to teams_path
     end
