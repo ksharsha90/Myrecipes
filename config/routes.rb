@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   
   resources :teams
   
+  get '/signup', to: 'rowdies#new'
+  resources :rowdies, except: [:new]
+  
 end
