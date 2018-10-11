@@ -7,29 +7,51 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <%= link_to "Rowdies", rowdies_path, class: "nav-item nav-link" %>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+      <%= link_to "Rowdies", rowdies_path, class: "nav-link" %>
       </li>
+      <li class="nav-item">
+      <%= link_to "All Teams", teams_path, class: "nav-link" %>
+      </li>
+      
+      
+      <% if logged_in? %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Teams
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to "create a new team", new_team_path, class: "dropdown-item" %>
+          <%= link_to "View your profile", rowdy_path(current_rowdie), class: "dropdown-item" %>
+      </li>
+      <% end %>
+      </ul>
+    <% if logged_in? %>
+     <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= current_rowdie.rowdyname.capitalize %>'s Profile
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           
-          <%= link_to "Create a new team", new_team_path, class: "dropdown-item" %>
-          <a class="dropdown-item" href="#">Another action</a>
+          <%= link_to "Edit your profile", edit_rowdy_path(current_rowdie), class: "dropdown-item" %>
+          
+          <%= link_to "View your profile", rowdy_path(current_rowdie), class: "dropdown-item" %>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <%= link_to "Log out", logout_path, method: :delete, class: "dropdown-item" %>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+      </ul>
+      
+      <% else %>
+      
+      <ul class="navbar-nav">
+      <li class=" nav-item ">
+        <%= link_to "Log in", login_path, class: "nav-link" %>
       </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+      </ul>
+    <% end %>
+      
+       
   </div>
 </nav>

@@ -1,9 +1,11 @@
 class TeamsController < ApplicationController
   
-  before_action :set_team, only: [:show, :edit, :update]
+  before_action :set_team, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, except: [:index, :show]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
   
   def index
-    @teams = Team.paginate(page: params[:page], per_page: 2)
+    @teams = Team.paginate(page: params[:page], per_page: 5)
   end
   
   def show
@@ -16,7 +18,7 @@ class TeamsController < ApplicationController
   
   def create
     @team = Team.new(team_params)
-    @team.rowdie = Rowdie.first
+    @team.rowdie = current_rowdie
     if @team.save
       flash[:success] = "Team was created successfully!"
       redirect_to team_path(@team)
@@ -53,6 +55,13 @@ class TeamsController < ApplicationController
   
   def team_params
     params.require(:team).permit(:name, :description)
+  end
+  
+  def require_same_user
+    if current_rowdie != @team.rowdie
+      flash[:danger] = "You can only edit or delete your own team!"
+      redirect_to teams_path
+    end
   end
   
 end
