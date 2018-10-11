@@ -107,12 +107,17 @@ footer ul{
 .listing {
   list-style: none;
   padding-left: 0;
+  padding: 3px;
 }
 
 .chef-title {
   color: #212529;
   font-weight: bold;
   font-size: 1.25em;
+}
+
+.listing .card {
+  padding: 4px;
 }
 
 

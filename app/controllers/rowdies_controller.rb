@@ -37,6 +37,13 @@ class RowdiesController < ApplicationController
     end
   end
   
+  def destroy
+    @rowdie = Rowdie.find(params[:id])
+    @rowdie.destroy
+    flash[:danger] = "Rowdie and all associated teams have been deleted"
+    redirect_to rowdies_path
+  end
+  
   
   private
   
