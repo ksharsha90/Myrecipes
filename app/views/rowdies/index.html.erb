@@ -1,0 +1,27 @@
+<%= render 'shared/page_title', title: "showing all rowdies" %>
+
+<div align="center">
+       <%= will_paginate @teams, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, list_classes: %w(pagination justify-content-end) %>
+  <% @rowdies.each do |rowdie| %>
+  <ul class="listing">
+    <div class="row">
+      <div class="card col-md-4 offset-md-4">
+        <li>
+          <%= link_to gravatar_for(rowdie), rowdy_path(rowdie) %>
+        </li>
+        <li class="rowdie-title">
+          <%= link_to rowdie.rowdyname.capitalize, rowdies_path(rowdie) %>
+        </li>
+        <li>
+          <small><%= pluralize(rowdie.teams.count, "team") if rowdie.teams %></small>
+        </li>
+      </div>
+    </div>
+  </ul>
+  <% end %>
+</div>
+
+ 
+ <%= will_paginate @teams, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, list_classes: %w(pagination justify-content-end) %>
+
+ 

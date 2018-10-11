@@ -4,4 +4,5 @@ class Team < ApplicationRecord
   
   belongs_to :rowdie
   validates :rowdie_id, presence: true 
+  default_scope -> { order(updated_at: :desc)}
 end

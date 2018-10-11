@@ -1,5 +1,9 @@
 class RowdiesController < ApplicationController
   
+  def index
+    @rowdies = Rowdie.paginate(page: params[:page], per_page: 5)
+  end
+  
   def new
     @rowdie = Rowdie.new
   end
@@ -16,6 +20,7 @@ class RowdiesController < ApplicationController
   
   def show
     @rowdie = Rowdie.find(params[:id])
+    @rowdie_teams = @rowdie.teams.paginate(page: params[:page], per_page: 5)
   end
   
   def edit

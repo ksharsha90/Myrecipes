@@ -8,4 +8,6 @@
 
 
 <h4 align="center"><%= @rowdie.rowdyname %>'s teams</h4>
-<%= render 'teams/team', obj: @rowdie.teams %>
+ <%= will_paginate @rowdie_teams, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, list_classes: %w(pagination justify-content-end)  %>
+<%= render 'teams/team', obj: @rowdie_teams %>
+  <%= will_paginate @rowdie_teams, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, list_classes: %w(pagination justify-content-end)  %>

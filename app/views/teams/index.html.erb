@@ -1,2 +1,6 @@
 <%= render 'shared/page_title', title: "showing all teams" %>
+  <%= will_paginate @teams, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, list_classes: %w(pagination justify-content-end) %>
 <%= render 'team', obj: @teams %>
+  <%= will_paginate @teams, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, list_classes: %w(pagination justify-content-end) %>
+
+ 

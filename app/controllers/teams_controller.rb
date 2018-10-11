@@ -3,7 +3,7 @@ class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update]
   
   def index
-    @teams = Team.all
+    @teams = Team.paginate(page: params[:page], per_page: 2)
   end
   
   def show

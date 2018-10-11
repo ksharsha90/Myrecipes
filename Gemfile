@@ -9,6 +9,8 @@ gem 'rails', '~> 5.2.1'
 gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails'
 
+gem 'will_paginate-bootstrap4'
+
 
 
 # Use sqlite3 as the database for Active Record
