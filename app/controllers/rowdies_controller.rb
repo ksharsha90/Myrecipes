@@ -15,7 +15,21 @@ class RowdiesController < ApplicationController
   end
   
   def show
-    
+    @rowdie = Rowdie.find(params[:id])
+  end
+  
+  def edit
+    @rowdie = Rowdie.find(params[:id])
+  end
+  
+  def update
+    @rowdie = Rowdie.find(params[:id])
+    if @rowdie.update(rowdie_params)
+      flash[:success] = "Your account has updated succesfully!"
+      redirect_to @rowdie
+    else
+      render 'edit'
+    end
   end
   
   
