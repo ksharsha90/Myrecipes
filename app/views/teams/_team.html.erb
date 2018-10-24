@@ -6,6 +6,10 @@
       <%= gravatar_for(team.rowdie, size: 120) %>
     </section>
   </div>
+  
+  
+  
+  
   <div class="col-md-8 card bg-light  p-3 mb-4 ">
     <h4><%= link_to team.name, team_path(team)  %></h4>
       <p><%= truncate(team.description, length: 150) %></p>
@@ -21,5 +25,9 @@
       </div>
       <% end %>
   </div>
+  
+ 
+  
+  
 </div>
 <% end %>
