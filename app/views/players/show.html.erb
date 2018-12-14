@@ -1,0 +1,13 @@
+<%= render 'shared/page_title', title: "Rowdie #{@player.name}" %>
+
+
+<% if @player.teams.count != 0 %>
+
+<h4 align="center"> Plays for</h4>
+ <%= will_paginate @player_teams, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, list_classes: %w(pagination justify-content-end)  %>
+<%= render 'teams/team', obj: @player_teams %>
+  <%= will_paginate @player_teams, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, list_classes: %w(pagination justify-content-end)  %>
+  <% else %>
+  
+  <h4 align="center">No teams yet</h4>
+  <% end %>

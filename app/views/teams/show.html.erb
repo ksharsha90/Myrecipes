@@ -9,7 +9,7 @@
         <em>Created by:</em>
       </p>
       <p class="cent">
-        <%= link_to gravatar_for(@team.rowdie), team_path %>
+        <%= link_to gravatar_for(@team.rowdie), team_path(@team.rowdie) %>
       </p>
       <p class="cent">
         <small><%= @team.rowdie.rowdyname.capitalize %></small>

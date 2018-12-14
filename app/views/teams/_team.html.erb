@@ -7,14 +7,14 @@
     </section>
   </div>
   
-  
-  
-  
   <div class="col-md-8 card bg-light  p-3 mb-4 ">
     <h4><%= link_to team.name, team_path(team)  %></h4>
       <p><%= truncate(team.description, length: 150) %></p>
+      <% if team.players.any? %>
+        <p>Players: <%= render team.players %></p>
+      <% end %>
       <p>
-      <span class="quiet"><small>Created <%= time_ago_in_words(team.created_at) %> ago</small></span>
+      <span class="quiet"><small>Created <%= time_ago_in_words(team.created_at) %> ago by <%= team.rowdie.rowdyname.capitalize %></small></span>
       </p>
       <% if logged_in? && (current_rowdie == team.rowdie || current_rowdie.admin?) %>
       <div class="recipe-actions">

@@ -1,0 +1,28 @@
+<%= render 'shared/errors', obj: @player %>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= form_for(@player, :html => {class: "form-horizantal", role: "form"}) do |f| %>
+    <div class="form-group row ">
+      <div class="col-form-label col-md-2">
+        <%= f.label :name %>
+      </div>
+      <div class="col-md-8">
+        <%= f.text_field :name, class: "form-control", placeholder: "Enter Player name" , autofocus: true %>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="offset-md-2 col-md-10">
+        <%= f.submit(@player.new_record? ? "Add Player" : "Update Player", class: "btn btn-primary btn-lg btn-xlarge") %>
+      </div>
+    </div>
+    <% end %>
+    <div class="col-md-4 offset-md-4 colormatch">
+      [ <%= link_to "cancel and go back to teams listing", teams_path %> ]
+    </div>
+  </div>
+</div>
+
+
+

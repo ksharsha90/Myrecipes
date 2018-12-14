@@ -1,0 +1,31 @@
+<%= render 'shared/page_title', title: "Available Players" %>
+
+<div align="center">
+       <%= will_paginate @teams, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, list_classes: %w(pagination justify-content-end) %>
+  <% @players.each do |pla| %>
+  <ul class="listing">
+    <div class="row">
+      <div class="card col-md-4 offset-md-4 h-100">
+        
+        <li class="rowdie-title">
+          <%= link_to pla.name.capitalize, player_path(pla) %>
+        </li>
+        <li>
+          <small><%= pluralize(pla.teams.count, "team") if pla.teams %></small>
+        </li>
+        
+        <% if logged_in? && current_rowdie.admin? %>
+        <li>
+          <%= link_to "Edit this player", edit_player_path(pla) %>
+        </li>
+        <% end %>
+      </div>
+    </div>
+  </ul>
+  <% end %>
+</div>
+
+ 
+ <%= will_paginate @teams, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, list_classes: %w(pagination justify-content-end) %>
+
+ 
