@@ -7,4 +7,5 @@ class Team < ApplicationRecord
   default_scope -> { order(updated_at: :desc)}
   has_many :team_players
   has_many :players, through: :team_players
+  has_many :comments, dependent: :destroy
 end
